@@ -14,6 +14,5 @@ Autoloader::add_classes(array(
     'Multilang\\Controller_Template'    		=> __DIR__.'/classes/controller_template.php',
     'Multilang\\Uri'                    		=> __DIR__.'/classes/uri.php',
     'Multilang\\Observer_Multilang'     		=> __DIR__.'/classes/observers/multilang.php',
-    'Multilang\\Observer_Slug'          		=> __DIR__.'/classes/observers/slug.php',
-    'Multilang\\Multilang_TwigExtension' 	    => __DIR__.'/classes/twig_extension.php',
+    'Multilang\\Observer_Slug'          		=> __DIR__.'/classes/observers/slug.php'
 ));
