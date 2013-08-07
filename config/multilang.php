@@ -7,8 +7,7 @@
 
 return array(
     'active'            => true,
-    'rewrite_uri'       => true,
-    'additional_languages'  => array(),
-    'active_languages'  => array(),
+    'additional_languages'  => array(), //the languages you want to provide apart of the main one
+    'active_languages'  => array(), //all active languages (main + additional)
 );
  
