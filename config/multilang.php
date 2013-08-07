@@ -8,6 +8,6 @@
 return array(
     'active'            => true,
     'additional_languages'  => array(), //the languages you want to provide apart of the main one
-    'active_languages'  => array(), //all active languages (main + additional)
+    //'active_languages'  => array(), //all active languages (main + additional)
 );
  
