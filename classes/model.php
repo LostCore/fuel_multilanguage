@@ -184,11 +184,15 @@ class Model extends \Orm\Model{
         if(!isset($id)){ //create new obj with the $values
             $array_for_creation = array();
             foreach(static::$_properties as $k=>$v){
-                if(array_key_exists($k,$values)){
-                    $array_for_creation[$k] = $values[$k];
+                if(is_string($k) || is_integer($k)){ //workaround per errore stranissimo (guid, created_at e updated_at nn li legge come stringhe)
+                    if(array_key_exists($k,$values)){
+                        $array_for_creation[$k] = $values[$k];
+                    }
                 }
-                if(array_key_exists($v,$values)){
-                    $array_for_creation[$v] = $values[$v];
+                if(is_string($v) || is_integer($v)){
+                    if(array_key_exists($v,$values)){
+                        $array_for_creation[$v] = $values[$v];
+                    }
                 }
             }
             $new_obj = self::forge($array_for_creation);
