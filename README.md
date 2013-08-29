@@ -48,7 +48,7 @@ This wrapper automatically initialize the following variables in the constructor
 
 * $language_info["additionals"] = additional supported languages, taken by \Config::get('multilang.additional_languages')
 
-In before() method these variables are globally passed to template:
+In `before()` method these variables are globally passed to template:
 
     $this->template->set_global('default_language',$this->language_info['default']);
     $this->template->set_global('additional_languages',$this->language_info['additionals']);
