@@ -12,7 +12,7 @@ class Controller_Template extends \Fuel\Core\Controller_Template{
         $this->language_info['additionals'] = \Config::get('multilang.additional_languages');
     }
 
-	public function before(){
+    public function before(){
         parent::before();
         \Config::load("i18n",true);
         \Config::set("i18n.rewrite_uri",false);
