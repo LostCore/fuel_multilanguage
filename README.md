@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a collection of class that aim to help in building multilanguage websites with FuelPHP. **It uses i18n packages functions.**
+This is a collection of class that aim to help in building multilanguage websites with FuelPHP. **It uses i18n packages functions**, for this reason all languages must be identified by ISO 639-1 lowercase abbreviation (en,zh,it,es).
 
 ## Development Team
 
@@ -29,15 +29,15 @@ A collection of helper functions
 ### Default configs
 
 active => true
-additional_languages => array() the languages you want to provide apart of the main one
+additional_languages => array() the languages you want to translate your content to.
 
 ### Controller Template
 
 This wrapper automatically initialize the following variables in the constructor:
 
-* $language_info["default"] = <the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage() >
+* $language_info["default"] = the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage()
 
-* $language_info["additionals"] = <additional supported languages, taken by \Config::get('multilang.additional_languages')
+* $language_info["additionals"] = additional supported languages, taken by \Config::get('multilang.additional_languages')
 
 In before() method these variables are globally passed to template:
 
@@ -46,22 +46,33 @@ In before() method these variables are globally passed to template:
 
 ### Model
 
-By using this wrapper you can specify which field of the model must be treated as multilanguage. All you must do is to add the key "multilang" to true in the desidered property:
+By using this wrapper you can specify which field of the model must be treated as multilanguage. All you must do is to add the key "multilang" to true in the desidered property and an observer for all those properties:
 
-        protected static $_properties = array(
-            'id',
-            ...
-            ...
-            'page_title' => array(
-                'data_type' => 'varchar',
-                'label' => 'Title',
-                'form' => array(
-                    'type'=>'text',
-                    'class'=>'span6'
-                ),
-                'multilang' => true
+    protected static $_properties = array(
+        'id',
+        ...
+        ...
+        'page_title' => array(
+            'data_type' => 'varchar',
+            'label' => 'Title',
+            'form' => array(
+                'type'=>'text',
+                'class'=>'span6'
             ),
-        );
+            'multilang' => true
+        ),
+    );
+
+    ...
+
+    protected static $_observers = array(
+        ...
+        'Multilang\Observer_Multilang' => array(
+            'events' => array('after_load','before_save'),
+            'fields' => array('page_title','page_content','page_excerpt',...)
+        ),
+        ...
+    );
 
 This wrapper expose the following static functions:
 
@@ -149,6 +160,16 @@ Build a model that can be saved. If `$id` in `null` then the function assumes th
 **validate()**
 
 Returns the a validation object for the model.
+
+### Observers
+
+**Multilang**
+
+This observer serialize the multilang field before saving. See above. __It is required__.
+
+**Slug**
+
+This wrapper for FuelPHP Slug Observer serialize the slug if it is specified as multilanguage.
 
 
 
