@@ -35,13 +35,9 @@ additional_languages => array() the languages you want to provide apart of the m
 
 This wrapper automatically initialize the following variables in the constructor:
 
-*Array* language_info{
+* $language_info["default"] = <the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage() >
 
- default => <the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage() >
-
- additionals => <additional supported languages, taken by \Config::get('multilang.additional_languages')
-
-}
+* $language_info["additionals"] = <additional supported languages, taken by \Config::get('multilang.additional_languages')
 
 In before() method these variables are globally passed to template:
 
@@ -71,7 +67,7 @@ This wrapper expose the following static functions:
 
 **set_form_values($existing_values = null,$action)**
 
-This takes every *$_properties* sets in the caller model and build an array that can be used in a view for adding or editing the resource. This is useful for manage field values for elements like select or radio with ease.
+This takes every `$_properties` sets in the caller model and build an array that can be used in a view for adding or editing the resource. This is useful for manage field values for elements like select or radio with ease.
 
 By default the function build an associative array with all properties of model as keys, every one with empty string as value, but you can pass an object or an array with the values for the fields.
 A field "_additional_languages" will be created for those fields specified as multilanguage.
@@ -106,7 +102,7 @@ So, you can write something like this in a view:
         ...
     </form>
 
-This template works great in a adding context, because if *null* in passed as first argument, the array will be filled with empty values.
+This template works great in a adding context, because if `null` in passed as first argument, the array will be filled with empty values.
 
 **filter_for_language($instance,$lang)**
 
