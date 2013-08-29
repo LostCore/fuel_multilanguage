@@ -24,12 +24,21 @@ A wrapper of FuelPHP model with multilanguage capabilities
 
 A collection of helper functions
 
+*classes/observers* **multilang.php**
+
+An observer that handle the "before save" stage for multilanguage fields.
+
+*classes/observers* **slug.php**
+
+A wrapper for FuelPHP slug observer that handle the saving for multilanguage slugs.
+
 ## Documentation
 
 ### Default configs
 
-active => true
-additional_languages => array() the languages you want to translate your content to.
+active => true - enable\disable the system.
+
+additional_languages => array() - the languages you want to translate your content to.
 
 ### Controller Template
 
