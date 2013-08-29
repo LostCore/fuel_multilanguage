@@ -36,8 +36,11 @@ additional_languages => array() the languages you want to provide apart of the m
 This wrapper automatically initialize the following variables in the constructor:
 
 *Array* language_info{
-    default => <the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage() >
-    additionals => <additional supported languages, taken by \Config::get('multilang.additional_languages')
+
+ default => <the default language. es: it, en... taken by \Intl::forge()->getDefaultLanguage() >
+
+ additionals => <additional supported languages, taken by \Config::get('multilang.additional_languages')
+
 }
 
 In before() method these variables are globally passed to template:
@@ -137,7 +140,7 @@ A wrapper for filter_for_language that filters for current language.
 
 **prepare_for_saving($id = null,$values = null)**
 
-Build a model that can be saved. If $id in *null* then the function assumes that a new resource must be created; If $values is *null* the $_POST values will be used.
+Build a model that can be saved. If `$id` in `null` then the function assumes that a new resource must be created; If `$values` is `null` the $_POST values will be used.
 
     $page_validation = Model_Page::validate();
     if($page_validation->run()){
