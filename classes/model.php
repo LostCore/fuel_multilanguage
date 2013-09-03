@@ -120,8 +120,8 @@ class Model extends \Orm\Model{
     public static function validate(){
         $validation = \Validation::forge(\Str::random('alnum', 32));
         foreach(static::$_properties as $k=>$v){
-            if(isset($k['validation'])){
-                $validation->add_field($v,$k['label'],$k['validation']);
+            if(isset($v['validation'])){
+                $validation->add_field($v,$v['label'],$v['validation']);
             }
         }
 
